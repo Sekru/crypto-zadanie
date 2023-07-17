@@ -1,0 +1,77 @@
+<div *ngIf="(cryptocurrency$ | async) as element">
+    <mat-card class="crypto-card">
+        <mat-card-header>
+            <mat-card-title>{{ element.name }}</mat-card-title>
+            <mat-card-subtitle>{{ element.symbol }}</mat-card-subtitle>
+        </mat-card-header>
+        <img alt="{{ element.symbol }}" [src]="getIconUrl(element.symbol)" loading="lazy" />
+        <mat-card-content class="crypto-desc">
+            <div class="item">
+                <p>
+                    First Date: {{ element.first_data_at | date:'short' }}
+                </p>
+                <p>
+                    Last Updated: {{ element.last_updated | date:'short' }}
+                </p>
+                <p>
+                    Circulating Supply: {{ element.circulating_supply | currency }}
+                </p>
+                <p>
+                    Total Supply: {{ element.total_supply | currency }}
+                </p>
+                <p>
+                    Max Supply: {{ element.max_supply | currency }}
+                </p>
+                <p>
+                    Beta Value: {{ element.beta_value | currency }}
+                </p>
+                <p>
+                    Price: {{ element.quotes.USD.price | currency }}
+                </p>
+                <p>
+                    Volume 24h: {{ element.quotes.USD.volume_24h | currency }}
+                </p>
+                <p>
+                    Market Cap: {{ element.quotes.USD.market_cap | currency }}
+                </p>
+            </div>
+            <div class="item">
+                <p>
+                    Percent Change 15m: {{ element.quotes.USD.percent_change_15m | currency }}
+                </p>
+                <p>
+                    Percent Change 30m: {{ element.quotes.USD.percent_change_30m | currency }}
+                </p>
+                <p>
+                    Percent Change 1h: {{ element.quotes.USD.percent_change_1h | currency }}
+                </p>
+                <p>
+                    Percent Change 6h: {{ element.quotes.USD.percent_change_6h | currency }}
+                </p>
+                <p>
+                    Percent Change 12h: {{ element.quotes.USD.percent_change_12h | currency }}
+                </p>
+                <p>
+                    Percent Change 24h: {{ element.quotes.USD.percent_change_24h | currency }}
+                </p>
+                <p>
+                    Percent Change 7d: {{ element.quotes.USD.percent_change_7d | currency }}
+                </p>
+                <p>
+                    Percent Change 30h: {{ element.quotes.USD.percent_change_30d | currency }}
+                </p>
+            </div>
+            <div class="item">
+                <p>
+                    Ath price: {{ element.quotes.USD.ath_price | currency }}
+                </p>
+                <p>
+                    Ath Date: {{ element.quotes.USD.ath_date | date:'short' }}
+                </p>
+                <p>
+                    Percent From Price Ath: {{ element.quotes.USD.percent_from_price_ath | currency }}
+                </p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
